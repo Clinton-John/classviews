@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView, RedirectView
-from base.models import Post
+from base.models import Post, Movie
 from django.shortcuts import get_object_or_404
 from django.db.models import F
 # Create your views here.
 
 def home(request):
-    return render(request, 'base/home.html')
+    movies = Movie.objects.all()
+    context = {'movies':movies}
+    return render(request, 'base/home.html', context)
 
 class ChatApp(TemplateView):
     #the below are the attributes that you can pass into this class to overwrite those in the initial class

@@ -20,6 +20,13 @@
             <a href="{% url 'redirect_user' %}">Clinton John</a>
         </div>
     </div>
+
+    <div class="user_movies">
+        <h1>Movies section</h1>
+        {% for movie in movies %}
+        <h2>{{movie.title}}</h2>
+        <img src="{{movie.movie_cover.url}}" alt="" style="max-width:200px; max-height:200px;"> {{movie.poster}} {{movie.cover}} {% endfor %}
+    </div>
 </body>
 
 </html>

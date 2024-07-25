@@ -1,0 +1,23 @@
+working with user uploading files and then serving them
+using the Django anchor --- pip install django-anchor
+add anchor to the installed apps 'anchor'
+
+in the django field, import the BlobField and create the model including the field to create
+
+from anchor.models.fields import BlobField
+class Movie(models.Model):
+    title = models.CharField(max_length=100)
+    # A compulsory field that must be set on every instance
+    cover = BlobField()
+    # An optional file that can be left blank
+    poster = BlobField(blank=True, null=True)
+
+create a media root folder to handle uploading all of the media including the images
+in the urls.py file, import the settings and then add it into the urls
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('', include('base.urls')),
+    path('admin/', admin.site.urls),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

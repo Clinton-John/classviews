@@ -10,7 +10,8 @@ from base.views import ChatApp, AllTeams, SingleTeam
 # using the CBVs
 # 1. Templateviews 
 urlpatterns =[
-    path('', TemplateView.as_view(template_name="base/home.html", extra_context={'title':'Custom Title'})),
+    path('', views.home),
+    # path('', TemplateView.as_view(template_name="base/home.html", extra_context={'title':'Custom Title'})),
     path('chat/', ChatApp.as_view(), name='chat'),
     #redirectView
     path('rdt', RedirectView.as_view(url='https://github.com/Clinton-John'), name='redirect_user'),
